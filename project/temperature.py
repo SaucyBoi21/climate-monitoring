@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import time
 from bme280 import BME280
 
@@ -24,12 +22,25 @@ Press Ctrl+C to exit!
 bus = SMBus(1)
 bme280 = BME280(i2c_dev=bus)
 
+count = 0
+values = {
+
+}
+
+
+def add_value(temp, pres, hum):
+    value = {
+        "temperature": temp,
+        "pressure": pres,
+        "humidity": hum
+    }
+    values.append(value)
+
+
 while True:
     temperature = bme280.get_temperature()
     pressure = bme280.get_pressure()
     humidity = bme280.get_humidity()
-    logging.info("""Temperature: {:05.2f} *C
-Pressure: {:05.2f} hPa
-Relative humidity: {:05.2f} %
-""".format(temperature, pressure, humidity))
+    add_value(temperature, pressure, humidity)
+    print(values)
     time.sleep(1)

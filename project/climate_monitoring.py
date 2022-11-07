@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import time
-import pandas as pd
 from bme280 import BME280
 
 try:
