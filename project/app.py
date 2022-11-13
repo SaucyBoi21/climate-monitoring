@@ -32,5 +32,5 @@ temperature = np.array([
 ])
 
 while True:
-    np.append(temperature, bme280.get_temperature())
+    temperature = np.append(temperature, bme280.get_temperature())
     print(temperature)
