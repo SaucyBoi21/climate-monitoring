@@ -42,6 +42,7 @@ time = np.array([
 while count < 10:
     temperature = np.append(temperature, bme280.get_temperature())
     time = np.append(time, datetime.datetime.now())
+    count += 1
 
 
 print(temperature)
