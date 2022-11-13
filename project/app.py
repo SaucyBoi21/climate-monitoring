@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
+import numpy as np
 
 import time
 from bme280 import BME280
 
-from flask import Flask
-
-app = Flask(__name__)
 
 
 try:
@@ -29,7 +27,10 @@ Press Ctrl+C to exit!
 bus = SMBus(1)
 bme280 = BME280(i2c_dev=bus)
 
-@app.get("/temperature")
-def get_temperature():
-    temperature = bme280.get_temperature()
-    return temperature
+temperature = np.array([
+
+])
+
+while True:
+    temperature.append([bme280.get_temperature()])
+    print(temperature)
