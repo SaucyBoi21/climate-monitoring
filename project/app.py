@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import numpy as np
 
+import datetime
+
 import time
 from bme280 import BME280
 
@@ -27,10 +29,20 @@ Press Ctrl+C to exit!
 bus = SMBus(1)
 bme280 = BME280(i2c_dev=bus)
 
+count = 0
+
 temperature = np.array([
 
 ])
 
-while True:
+time = np.array([
+
+])
+
+while count < 10:
     temperature = np.append(temperature, bme280.get_temperature())
-    print(temperature)
+    time = np.append(time, datetime.datetime.now())
+
+
+print(temperature)
+print(time)
